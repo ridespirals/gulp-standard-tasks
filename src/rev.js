@@ -15,7 +15,7 @@ module.exports = ({
         return gulp.src(src)
             .pipe(rev())
             .pipe(revCssUrls())
-            .pipe(gulpif(gzip, gulpGzip())
+            .pipe(gulpif(gzip, gulpGzip()))
             .pipe(gulp.dest(dest))
             .pipe(rev.manifest())
             .pipe(gulp.dest(manifest));
