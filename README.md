@@ -38,7 +38,7 @@ To use the `clean` task simply register it with `gulp.task` passing the folder t
 
 ```
 const gulp = require('gulp');
-const tasks = require('gulp-standard-tasks');
+const tasks = require('gulp-standard-tasks')(gulp);
 
 gulp.task('clean-images', tasks.clean('./_site/images/**/*'));
 ```
@@ -58,7 +58,7 @@ The `copy` task accepts accepts an object with the following properties:
 
 ```
 const gulp = require('gulp');
-const tasks = require('gulp-standard-tasks');
+const tasks = require('gulp-standard-tasks')(gulp);
 
 gulp.task('docs-image-copy', ['clean-images'], tasks.copy({
 	src: './docs/images/**/*',
@@ -94,7 +94,7 @@ The `css` task accepts accepts an object with the following properties:
 
 ```
 const gulp = require('gulp');
-const tasks = require('gulp-standard-tasks');
+const tasks = require('gulp-standard-tasks')(gulp);
 
 gulp.task('sass-dev', tasks.css({
 	src: 'docs/_scss/docs.scss',
@@ -125,7 +125,7 @@ The `svg` task accepts accepts an object with the following properties:
 
 ```
 const gulp = require('gulp');
-const tasks = require('gulp-standard-tasks');
+const tasks = require('gulp-standard-tasks')(gulp);
 
 gulp.task('svg-icons', tasks.svg({
     src: 'src/svg/icons/*.svg',
@@ -154,7 +154,7 @@ The `svg` task accepts accepts an object with the following properties:
 
 ```
 const gulp = require('gulp');
-const tasks = require('gulp-standard-tasks');
+const tasks = require('gulp-standard-tasks')(gulp);
 
 gulp.task('browserify', tasks.browserify({
     src: 'docs/scripts/docs.js',
@@ -172,7 +172,7 @@ To use the Jekyll builder you will need to have first installed the Jekyll Ruby 
 
 ```
 const gulp = require('gulp');
-const tasks = require('gulp-standard-tasks');
+const tasks = require('gulp-standard-tasks')(gulp);
 
 gulp.task('jekyll-build', tasks.jekyll.build);
 
@@ -192,7 +192,7 @@ This example shows how you might use Browsersync in conjunction with jekyll to r
 
 ```
 const gulp = require('gulp');
-const tasks = require('gulp-standard-tasks');
+const tasks = require('gulp-standard-tasks')(gulp);
 
 gulp.task('serve', ['jekyll-build'], function() {
     tasks.browserSync({
