@@ -166,7 +166,7 @@ gulp.task('browserify', tasks.browserify({
 
 ### Jekyll
 
-Reusable task for running a Jekyll build
+To use the Jekyll builder you will need to have first installed the Jekyll Ruby Gem. This task will wrap the Ruby Gem to enable Jeyll builds to be controlled by Gulp.
 
 #### Example usage: 
 
