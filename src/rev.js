@@ -4,6 +4,7 @@ const gulp = require('gulp');
 const rev = require('gulp-rev');
 const revCssUrls = require('gulp-rev-css-url');
 const gulpGzip = require('gulp-gzip');
+const gulpif = require('gulp-if');
 
 module.exports = ({
     src = null,
