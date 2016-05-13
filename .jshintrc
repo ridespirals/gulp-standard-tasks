@@ -18,17 +18,6 @@
     "strict": false,
     "boss": true,
     "globals": {
-        "expect": true,
-        "require": true,
-        "define": true,
-        "beforeEach": true,
-        "afterEach": true,
-        "describe": true,
-        "it": true,
-        "done": true,
-        "Wormhole": true,
-        "__gaTracker": true,
-        "_gaq": true,
-        "md5": true
+        "require": true
     }
 }
