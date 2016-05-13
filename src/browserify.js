@@ -22,7 +22,7 @@ module.exports = ({
     debug = null,
     bundleName = 'app-bundle.min.js'
 }) => {
-    let shouldMinify = (mode === 'prod' && minfy !== false) || minify === true;
+    let shouldMinify = (mode === 'prod' && minify !== false) || minify === true;
     let shouldFullPaths = (mode === 'dev' && fullPaths !== false) || fullPaths === true;
     let shouldDebug = (mode === 'dev' && debug !== false) || debug === true;
 

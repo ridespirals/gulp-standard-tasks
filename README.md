@@ -1,6 +1,6 @@
 # gulp-standard-tasks
 
-`gulp-standard-tasks` is a opinionated set of tasks that can be registered with `gulp` to quickly enable building of static assets. Aside from building static assets it also bundles BrowserSync to enable auto reloading of the browser when changes have been made to the page or assets.
+`gulp-standard-tasks` is an opinionated set of tasks that can be registered with `gulp` to quickly enable building of static assets. Aside from building static assets it also bundles Browsersync to enable auto reloading of the browser when changes have been made to the page or assets.
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -16,7 +16,7 @@
 
 ## Installation
 
-To install `gulp-standard-tasks` simply install it from npm using
+To install `gulp-standard-tasks` install it from npm using
 
 ```
 npm install gulp-standard-tasks --save-dev
@@ -24,15 +24,15 @@ npm install gulp-standard-tasks --save-dev
 
 ## Usage
 
-To use `gulp-standard-tasks` simply register the tasks you want to use using `gulp`, instructions on how to do this for each task follows;
+To use `gulp-standard-tasks` register the tasks you want to use using `gulp`. Instructions on how to do this for each task follow.
 
 ### Clean
 
-The `clean` task is used to remove a directory and its contents. This is typically used before regenerating your assets so you can ensure the folder your assets are built to do not contain any legacy assets.
+The `clean` task is used to remove a directory and its contents. This is typically used before regenerating your assets so you can ensure the folder your assets are built to does not contain any legacy assets.
 
 #### Options
 
-To use the `clean` task simply register it with `gulp.task` passing the folder to be deleted as a parameter.
+To use the `clean` task, register it with `gulp.task` passing the folder to be deleted as a parameter.
 
 #### Example usage
 
@@ -49,7 +49,7 @@ The `copy` task enables you to copy assets from one location to another.
 
 #### Options
 
-The `copy` task accepts accepts an object with the following properties:
+The `copy` task accepts an object with the following properties:
 
 * `src`  Standard `gulp` src expression specifying files to be copied
 * `dest` Destination directory
@@ -79,16 +79,16 @@ The `css` task enables you to compile Sass to CSS. It takes an opinionated appro
 
 #### Options
 
-The `css` task accepts accepts an object with the following properties:
+The `css` task accepts an object with the following properties:
 
 * `src`  Standard `gulp` src expression
 * `dest` Destination directory,
 * `mode` Development (dev) or Production (prod) mode 
-* `autoprefixer` autoprefixer browser expression for what you want to support, **default value** 'last 3 versions'
-* `csso` enable csso CSS optimisation **default value** true (prod mode), false (dev mode)
-* `sourcemaps` enable sourcemaps **default value** true (dev mode), false (prod mode)
-* `browserSync` - enable browsersync **default value** false
-* `rename` - object to be passed to gulp-rename - see [gulp-rename](https://www.npmjs.com/package/gulp-rename#usage) for avaliable options 
+* `autoprefixer` Autoprefixer browser expression for what you want to support, **default value** 'last 3 versions'
+* `csso` Enable csso CSS optimisation **default value** true (prod mode), false (dev mode)
+* `sourcemaps` Enable sourcemaps **default value** true (dev mode), false (prod mode)
+* `browserSync` Enable Browsersync **default value** false
+* `rename` Object to be passed to gulp-rename - see [gulp-rename](https://www.npmjs.com/package/gulp-rename#usage) for available options 
 
 #### Example usage: 
 
@@ -114,11 +114,11 @@ Reusable task for compiling SVG into spritesheets
 
 #### Options
 
-The `svg` task accepts accepts an object with the following properties:
+The `svg` task accepts an object with the following properties:
 
 * `src`  Standard `gulp` src expression
 * `dest` Destination directory,
-* `prefix` A prefix the svg filenames will be prefixed with when referenced in the spritesheet **default value** 'icon-',
+* `prefix` A prefix the svg filenames will use when referenced in the spritesheet **default value** 'icon-',
 * `removeFill` Option to remove the fill of the SVG so it can be styled using CSS **default value** false
 
 #### Example usage: 
@@ -140,15 +140,15 @@ Reusable task for compiling JavaScript using browserify
 
 #### Options
 
-The `svg` task accepts accepts an object with the following properties:
+The `svg` task accepts an object with the following properties:
 
 * `src`  Standard `gulp` src expression
 * `dest` Destination directory,
-* `bundleName ` Name of the bundle to be built inside the destination folder
+* `bundleName` Name of the bundle to be built inside the destination folder
 * `mode` Development (dev) or Production (prod) mode **default value** dev
 * `watch` Should watchify be enabled for this build (watches files and rebuilds on changes) **default value** false
-* `minify ` Should JavaScript be minified using uglify **default value** true (prod mode), false (dev mode)
-* `fullPaths ` Should Browserify include the full paths to the modules it has included (needed for tools such as discify that to deep package inspection) **default value** true (dev mode), false (prod mode)
+* `minify` Should JavaScript be minified using uglify **default value** true (prod mode), false (dev mode)
+* `fullPaths` Should Browserify include the full paths to the modules it has included (needed for tools such as discify that do deep package inspection) **default value** true (dev mode), false (prod mode)
 
 #### Example usage: 
 
@@ -188,7 +188,7 @@ A Browsersync instance is exposed by gulp-standard-tasks so that this instance c
 
 #### Example usage: 
 
-This example shows how you might use Browsersync in conjunction with jekyll to reload the content after jekyll has rebuilt the page.
+This example shows how you might use Browsersync in conjunction with Jekyll to reload the content after Jekyll has rebuilt the page.
 
 ```
 const gulp = require('gulp');
