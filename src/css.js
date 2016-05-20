@@ -26,7 +26,8 @@ module.exports = ({
     csso = null,
     sourcemaps = null,
     browserSync = false,
-    rename = {}
+    rename = {},
+    customSassOptions = {}
 }) => {
     var sourcemapsEnabled = (mode === 'dev' && sourcemaps !== false) || sourcemaps === true;
     var cssoEnabled = (mode === 'prod' && csso !== false) || csso === true;
@@ -39,7 +40,7 @@ module.exports = ({
             errorHandler: onError
         }))
         .pipe(gulpif(sourcemapsEnabled, gulpSourcemaps.init()))
-        .pipe(sass())
+        .pipe(sass(customSassOptions))
         .pipe(cmq({
             log: true
         }))
