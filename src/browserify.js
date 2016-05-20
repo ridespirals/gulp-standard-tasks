@@ -38,7 +38,7 @@ module.exports = ({
 
         if (watch) {
             b = watchify(browserify(opts));
-            b.on('update', () => bundle(b)); // on any dep update, runs the bundler
+            b.on('update', () => bundle(b, bundleName)); // on any dep update, runs the bundler
         } else {
             b = browserify(opts);
         }
