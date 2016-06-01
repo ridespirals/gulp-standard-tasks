@@ -1,18 +1,18 @@
 'use strict';
 
 const gulp = require('gulp');
-const svgstore = require('gulp-svgstore');
+const svgSprite = require('gulp-svg-sprite');
 const svgmin = require('gulp-svgmin');
 const cheerio = require('gulp-cheerio');
 const gulpif = require('gulp-if');
-const gulpRename = require('gulp-rename');
 
 module.exports = ({
     src = null,
     dest = null,
     prefix = 'icon-',
     removeFill = false,
-    rename = {},
+    spriteName = 'sprite.svg',
+    scssPath = '_sprite.scss'
 }) => {
     return () => {
         return gulp.src(src).pipe(gulpif(removeFill, cheerio({
@@ -29,8 +29,30 @@ module.exports = ({
                 }
             }]
         }))
-        .pipe(svgstore())
-        .pipe(gulpRename(rename))
-        .pipe(gulp.dest(dest));
+        .pipe(svgSprite({
+            shape: {
+                spacing: {
+                    padding: 5
+                }
+            },
+            mode: {
+                css: {
+                    dest: `./`,
+                    layout: 'diagonal',
+                    sprite: `${dest}/${spriteName}`,
+                    bust: false,
+                    render: {
+                        scss: {
+                            dest: scssPath,
+                            template: `${__dirname}/templates/sprite-template.scss`
+                        }
+                    }
+                }
+            },
+            variables: {
+                mapname: 'icons'
+            }
+        }))
+        .pipe(gulp.dest(process.cwd()));
     };
 };
