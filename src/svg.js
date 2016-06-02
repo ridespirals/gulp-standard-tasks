@@ -11,7 +11,7 @@ module.exports = ({
     dest = null,
     prefix = 'icon-',
     removeFill = false,
-    spriteName = 'sprite.svg',
+    spriteName = 'sprite',
     scssPath = '_sprite.scss'
 }) => {
     return () => {
@@ -37,9 +37,10 @@ module.exports = ({
             },
             mode: {
                 css: {
+                    commonName: 'test',
                     dest: `./`,
                     layout: 'diagonal',
-                    sprite: `${dest}/${spriteName}`,
+                    sprite: `${dest}/${spriteName}.svg`,
                     bust: false,
                     render: {
                         scss: {
@@ -50,7 +51,7 @@ module.exports = ({
                 }
             },
             variables: {
-                mapname: 'icons'
+                mapname: spriteName
             }
         }))
         .pipe(gulp.dest(process.cwd()));
