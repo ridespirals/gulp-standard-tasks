@@ -1,5 +1,5 @@
 ${{mapname}}: (
-	sprite: (width: {{spriteWidth}}px, height: {{spriteHeight}}px, svgPath: '{{{sprite}}}'),
+	sprite: (width: {{spriteWidth}}px, height: {{spriteHeight}}px, svgPath: "{{{sprite}}}"),
 {{#shapes}}
 	{{base}}: (width: {{width.inner}}px, height: {{height.inner}}px, backgroundX: {{position.absolute.x}}px, backgroundY: {{position.absolute.y}}px),
 {{/shapes}});
