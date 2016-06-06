@@ -1,16 +1,17 @@
 'use strict';
 
 const gulp = require('gulp');
-const autoprefix = require('gulp-autoprefixer');
 const gulpSourcemaps = require('gulp-sourcemaps');
+const postcss = require('gulp-postcss');
 const sass = require('gulp-sass');
-const gulpCsso = require('gulp-csso');
 const plumber = require('gulp-plumber');
 const gutil = require('gulp-util');
 const gulpRename = require('gulp-rename');
-const cmq = require('gulp-combine-media-queries');
 const gulpif = require('gulp-if');
 const nodeBrowserSync = require('browser-sync');
+const autoprefixerPostCSS = require('autoprefixer');
+const mqpackerPostCSS = require("css-mqpacker");
+const cssoPostCSS = require("postcss-csso");
 
 function onError(err) {
     gutil.beep();
@@ -29,8 +30,17 @@ module.exports = ({
     rename = {},
     customSassOptions = {}
 }) => {
-    var sourcemapsEnabled = (mode === 'dev' && sourcemaps !== false) || sourcemaps === true;
-    var cssoEnabled = (mode === 'prod' && csso !== false) || csso === true;
+    const sourcemapsEnabled = (mode === 'dev' && sourcemaps !== false) || sourcemaps === true;
+    const cssoEnabled = (mode === 'prod' && csso !== false) || csso === true;
+
+    let processors = [
+        autoprefixerPostCSS({browsers: [autoprefixer]}),
+        mqpackerPostCSS()
+    ];
+
+    if (cssoEnabled) {
+        processors.push(cssoPostCSS())
+    }
 
     return () => {
         nodeBrowserSync.notify('Sass building');
@@ -41,14 +51,7 @@ module.exports = ({
         }))
         .pipe(gulpif(sourcemapsEnabled, gulpSourcemaps.init()))
         .pipe(sass(customSassOptions))
-        .pipe(cmq({
-            log: true
-        }))
-        .pipe(autoprefix({
-            browsers: [autoprefixer],
-            cascade: false
-        }))
-        .pipe(gulpif(cssoEnabled, gulpCsso()))
+        .pipe(postcss(processors))
         .pipe(gulpif(sourcemapsEnabled, gulpSourcemaps.write('.')))
         .pipe(gulpif(browserSync, nodeBrowserSync.reload({
             stream: true
@@ -56,4 +59,4 @@ module.exports = ({
         .pipe(gulpRename(rename))
         .pipe(gulp.dest(dest));
     };
-}
+};
