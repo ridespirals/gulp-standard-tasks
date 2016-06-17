@@ -140,7 +140,7 @@ Reusable task for compiling JavaScript using browserify
 
 #### Options
 
-The `svg` task accepts an object with the following properties:
+The `browserify` task accepts an object with the following properties:
 
 * `src`  Standard `gulp` src expression
 * `dest` Destination directory,
